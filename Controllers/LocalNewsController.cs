@@ -45,7 +45,15 @@ public class LocalNewsController : ControllerBase
     [HttpPost(Name = "PostLocalNews")]
     public string Post(LocalNews localNews) 
     {
+		var newLocalNewsItem = new LocalNews
+		{
+			Title = localNews.Title,
+			Body = localNews.Body,
+			Url = localNews.Url,
+			PublishedAt = localNews.PublishedAt,
+			ImageUrl = localNews.ImageUrl
+		};
 		//saves localNews to DB
-        return $"Local News Posted at {DateTime.Now.ToString()}";
+        return $"Local News Posted at {newLocalNewsItem.PublishedAt.ToString()}";
     }
 }

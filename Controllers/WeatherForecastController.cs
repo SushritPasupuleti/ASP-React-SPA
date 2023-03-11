@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace ASP_React_SPA.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+// [Route("api/[controller]")]
+[Route("api/weather-forecast")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]

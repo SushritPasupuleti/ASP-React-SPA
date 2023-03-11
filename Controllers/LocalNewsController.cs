@@ -43,17 +43,33 @@ public class LocalNewsController : ControllerBase
     }
 
     [HttpPost(Name = "PostLocalNews")]
-    public string Post(LocalNews localNews) 
+    public IActionResult Post(LocalNews localNews)
     {
-		var newLocalNewsItem = new LocalNews
-		{
-			Title = localNews.Title,
-			Body = localNews.Body,
-			Url = localNews.Url,
-			PublishedAt = localNews.PublishedAt,
-			ImageUrl = localNews.ImageUrl
-		};
-		//saves localNews to DB
-        return $"Local News Posted at {newLocalNewsItem.PublishedAt.ToString()}";
+        Console.WriteLine("Saving Post with Title: " + localNews.Title);
+        var newLocalNewsItem = new LocalNews
+        {
+            Title = localNews.Title,
+            Body = localNews.Body,
+            Url = localNews.Url,
+            PublishedAt = localNews.PublishedAt,
+            ImageUrl = localNews.ImageUrl
+        };
+
+        var result = new LocalNewsOnSave
+        {
+            Title = newLocalNewsItem.Title,
+            PublishedAt = newLocalNewsItem.PublishedAt,
+            Message = $"Local News Posted at {newLocalNewsItem.PublishedAt.ToString()}"
+        };
+        //saves localNews to DB
+        // return $"Local News Posted at {newLocalNewsItem.PublishedAt.ToString()}";
+        return Ok(result);
+    }
+
+    //maps to api/local-news/reports
+    [HttpGet("reports")]
+    public string GetReports()
+    {
+        return "Reports are ready";
     }
 }

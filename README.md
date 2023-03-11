@@ -31,3 +31,10 @@ Generated JWT has the following decoded payload:
   "iss": "dotnet-user-jwts"
 }
 ```
+
+Trust the HTTPS Development Certificates
+
+```
+dotnet dev-certs https --trust
+```
+

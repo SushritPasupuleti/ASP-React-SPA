@@ -8,3 +8,10 @@ public class LocalNews
     public string? ImageUrl { get; set; }
     public DateTime PublishedAt { get; set; }
 }
+
+public class LocalNewsOnSave
+{
+	public string? Message { get; set; }
+	public string? Title { get; set; }
+	public DateTime PublishedAt { get; set; }
+}
